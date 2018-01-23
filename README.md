@@ -8,6 +8,7 @@ This docker image currently contains the following components:
 2. Alpine
 3. PHP 
 4. Phpmyadmin ( if using Local Database )
+5. Xdebug (with its profiler enabled, outputting to /home/LogFiles/)
 
 ## How to configure to use Azure Database for MySQL with web app 
 1. Create a Web App for Containers 
