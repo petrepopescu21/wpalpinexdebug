@@ -55,7 +55,9 @@ RUN set -ex \
 # =====
 RUN apk add --no-cache $PHPIZE_DEPS \
     && pecl install xdebug-2.5.0 \
-    && printf "zend_extension=$(find /usr/local/php/lib/php/extensions/ -name xdebug.so)\nxdebug.profiler_enable = 1\nxdebug.profiler_output_dir = \"/home/LogFiles/\"" > /usr/local/php/etc/conf.d/xdebug.ini
+    && echo "zend_extension=$(find /usr/local/php/lib/php/extensions/ -name xdebug.so)" > /usr/local/php/etc/conf.d/xdebug.ini \
+	&& echo "xdebug.profiler_enable = 1" >> /usr/local/php/etc/conf.d/xdebug.ini \
+	&& echo "xdebug.profiler_output_dir = \"/home/LogFiles/\"" >> /usr/local/php/etc/conf.d/xdebug.ini
 
 COPY wp.tar.gz $WORDPRESS_SOURCE/
 COPY wp-config.php $WORDPRESS_SOURCE/
