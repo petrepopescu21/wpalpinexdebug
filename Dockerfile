@@ -53,6 +53,10 @@ RUN set -ex \
 # =====
 # final
 # =====
+RUN apk add --no-cache $PHPIZE_DEPS \
+    && pecl install xdebug-2.5.0 \
+    && echo "zend_extension=$(find /usr/local/php/lib/php/extensions/ -name xdebug.so)" > /usr/local/php/etc/conf.d/xdebug.ini
+
 COPY wp.tar.gz $WORDPRESS_SOURCE/
 COPY wp-config.php $WORDPRESS_SOURCE/
 
